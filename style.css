@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
+*{
+  box-sizing: border-box;
+}
+body{
+  background-color: #EEF9BF;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+h1{
+  font-size: 56px;
+  font-weight: 700;
+  color: #75B79E;
+  margin: 40px 0;
+}
+.container{
+  width: 932px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+img{
+  width: 100px;
+  height: 100px;
+}
+
+.card {
+  width: 117px;
+  margin-right: 30px;
+  margin-bottom: 34px;
+  height: 146px;
+  transition: all .5s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.face {
+  width: 100%;
+  height: 100%;
+  background-color: #A7E9AF;
+  border: 1px solid #99CEA8;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  backface-visibility: hidden;
+  
+}
+
+.back-face {
+  transform: rotateY(180deg);
+  
+}
+.rotacionar180{
+  transform: rotateY(180deg);   /* colocar na front-face*/
+}
+.rotacionar-180{
+  transition-delay: 1s;
+    /* colocar na front-face*/
+}
+.rotacionar0{
+  transform: rotateY(0deg);   /* colocar na back-face*/
+  transition: all .5s;
+  transform-style: preserve-3d;
+  
+}
+/*
+.card:hover .back-face {
+  transform: rotateY(0deg);
+}
+
+.card:hover .front-face {
+  transform: rotateY(-180deg);
+}
+.escondido{
+  display: none;
+}
+*/
