@@ -1,9 +1,31 @@
 function comparador() {
   return Math.random() - 0.5
 }
-quantidadeCartas = prompt(
-  `Com quantas cartas quer jogar?\n*****REGRAS DO JOGO*****\n1. Cada click na carta é uma jogada.\n2. Caso o par de cartas viradas seja diferente, a próxima jogada só será possível depois de 1 segundo.`
-)
+let quantidadeCartas
+let meuIntervalo
+function inicioJogo() {
+  do {
+    quantidadeCartas = prompt(
+      `Com quantas cartas quer jogar?\n\n*********************REGRAS DO JOGO*********************\n\n1. Cada click na carta é uma jogada.\n\n2. Caso o par de cartas viradas seja diferente, a próxima jogada só será possível depois de 1 segundo.\n\n3. O jogo termina quando todas as cartas estiverem viradas.`
+    )
+  } while (
+    !(
+      quantidadeCartas % 2 === 0 &&
+      quantidadeCartas >= 4 &&
+      quantidadeCartas <= 14
+    )
+  )
+  document.querySelector('img').classList.add('escondido')
+  let contador = 0
+  function cronometro() {
+    console.log('cronometro')
+    contador++
+    document.querySelector('h2').innerHTML = `${contador}`
+  }
+  meuIntervalo = setInterval(cronometro, 1000)
+}
+inicioJogo()
+
 let imagens = [
   '/images/bobrossparrot.gif',
   '/images/explodyparrot.gif',
@@ -111,6 +133,13 @@ function verificarFim() {
     }
   }
   if (verificar === cartas.length) {
-    setTimeout(alert, 250, `Você ganhou em ${clicks} jogadas`)
+    console.log('fim')
+    clearInterval(meuIntervalo)
+    const tempo = document.querySelector('h2').innerHTML
+    setTimeout(
+      alert,
+      250,
+      `Você ganhou em ${clicks} jogadas\nVocê ganhou em ${tempo} segundos`
+    )
   }
 }
