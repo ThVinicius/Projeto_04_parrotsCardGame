@@ -104,12 +104,13 @@ function delay() {
   }
 }
 function verificarFim() {
+  let verificar = 0
   for (let i = 0; i < cartas.length; i++) {
-    if (cartas[i].valor === 0) {
-      break
-    } else {
-      setTimeout(alert, 250, 'Fim de jogo')
-      break
+    if (cartas[i].valor === 1) {
+      verificar++
     }
+  }
+  if (verificar === cartas.length) {
+    setTimeout(alert, 250, `Você ganhou em ${clicks} jogadas`)
   }
 }
