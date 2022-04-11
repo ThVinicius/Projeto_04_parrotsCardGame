@@ -10,7 +10,7 @@ criarArray()
 function inicioJogo() {
   do {
     quantidadeCartas = prompt(
-      `Com quantas cartas quer jogar?\n\n*********************REGRAS DO JOGO*********************\n\n1. Cada click na carta é uma jogada.\n\n2. Caso o par de cartas viradas seja diferente, a próxima jogada só será possível depois de 1 segundo.\n\n3. O jogo termina quando todas as cartas estiverem viradas.`
+      `Com quantas cartas quer jogar?\nNúmeros válidos: pares entre 4 e 14 (incluídos)\n\n**************REGRAS DO JOGO**************\n\n1. Cada click na carta é uma jogada.\n\n2. Caso o par de cartas viradas seja diferente, a próxima jogada só será possível depois de 1 segundo.\n\n3. O jogo termina quando todas as cartas estiverem viradas.`
     )
   } while (
     !(
@@ -19,11 +19,15 @@ function inicioJogo() {
       quantidadeCartas <= 14
     )
   )
-  document.querySelector('img').classList.add('escondido')
-  let contador = 0
+  let segundos = 0
+  let minutos = 0
   function cronometro() {
-    contador++
-    document.querySelector('h2').innerHTML = `${contador}`
+    segundos++
+    if (segundos === 60) {
+      segundos = 0
+      minutos += 1
+    }
+    document.querySelector('h2').innerHTML = `⏱️ ${minutos}m ${segundos}s`
   }
   meuIntervalo = setInterval(cronometro, 1000)
 }
@@ -114,17 +118,17 @@ function verificarFim() {
   if (verificar === cartas.length) {
     clearInterval(meuIntervalo)
     const tempo = document.querySelector('h2').innerHTML
-    setTimeout(
-      alert,
-      250,
-      `Você ganhou em ${clicks} jogadas\nVocê ganhou em ${tempo} segundos`
-    )
+    setTimeout(alert, 250, `Você ganhou em ${clicks} jogadas\nTempo: ${tempo}`)
+    let resposta
     setTimeout(function () {
-      let resposta = prompt('Quer jogar novamente?')
-      if (resposta === 'sim') {
-        console.log('oi')
-        document.location.href = ''
-      }
+      do {
+        resposta = prompt(
+          'Quer jogar novamente?\nRespostas válidas: sim ou não'
+        )
+        if (resposta === 'sim') {
+          location.reload()
+        }
+      } while (!(resposta === 'sim' || resposta === 'não'))
     }, 251)
   }
 }
