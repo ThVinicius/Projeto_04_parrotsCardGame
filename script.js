@@ -33,13 +33,13 @@ function inicioJogo() {
 }
 function criarArray() {
   let imagens = [
-    './images/bobrossparrot.gif',
-    './images/explodyparrot.gif',
-    './images/fiestaparrot.gif',
-    './images/metalparrot.gif',
-    './images/revertitparrot.gif',
-    './images/tripletsparrot.gif',
-    './images/unicornparrot.gif'
+    './/images/bobrossparrot.gif',
+    './/images/explodyparrot.gif',
+    './/images/fiestaparrot.gif',
+    './/images/metalparrot.gif',
+    './/images/revertitparrot.gif',
+    './/images/tripletsparrot.gif',
+    './/images/unicornparrot.gif'
   ]
   imagens.sort(comparador)
   let array = []
@@ -52,7 +52,7 @@ function criarArray() {
     document.querySelector('.container').innerHTML += `
   <div class="card${i}" onclick="virarCarta(this)">
     <div class="face">
-      <img src="./images/front.png" />
+      <img src=".//images/front.png" />
     </div>
     <div class="back-face face">
       <img src=${array[i]} />
